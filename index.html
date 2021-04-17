@@ -20,7 +20,7 @@ component[name=view-stack]{
 <h2>There are 3 files, view-stack.html , one.html and two.html</h2>
 <h3>This part of the page (index.html) does not change when you click in a link</h3>
 <p>Open DevTools in your browser (second mouse button, click on  Inspect Elements) and see what happens with the elements of this page when you click a link</p>
-<view-stack componentClass="CustomComponent">
+<view-stack componentClass="CustomComponent" effectClass="MainTransitionEffect">
   <routing path="/one" name="page-one" ></routing>
   <routing path="/two" name="page-two"></routing>
   <routing path="/" name="view-stack"></routing>
@@ -36,7 +36,12 @@ Class ("CustomComponent", Component, {
     component.addComponentHelper(function (){
       component.__promise__.then(function (){
         // This shows a notification when the content of the current page is fully loaded into the view stack
-        return Promise.resolve(NotificationComponent.success(`Current View is ${component.routingSelected.pop().name}`));
+        return Promise.resolve((function (){
+          // only shows the notification when the current view is page-two
+          if (component.routingSelected.pop().name=="page-two"){
+            NotificationComponent.success(`Current View is ${component.routingSelected.pop().name}`);
+          }
+        })());
       }).catch (function (e){
         return Promise.resolve(NotificationComponent.danger("some problem"));
       })
@@ -44,7 +49,19 @@ Class ("CustomComponent", Component, {
     });
     _super_("Component", "_new_").call(this, o);
   }
-});
+})
+
+Class("MainTransitionEffect",TransitionEffect,{
+  duration:2500,
+  defaultParams:{
+    alphaFrom:0,
+    alphaTo:1
+  },
+  effects:["Fade","MoveXInFromRight"],
+  fitToHeight:true
+})
+
+
 RegisterWidget("view-stack")
 </script>
 
