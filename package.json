@@ -22,5 +22,8 @@
     "qcobjects": "^2.3.24",
     "qcobjects-cli": "^2.3.16",
     "qcobjects-sdk": "^2.3.11"
+  },
+  "engines": {
+    "node": "^12"
   }
 }
