@@ -1,0 +1,26 @@
+{
+  "name": "qcobjects-view-stack-widget",
+  "version": "1.0.0",
+  "description": "A View Stack Widget Using QCObjects",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "qcobjects-createcert && node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/QuickCorp/qcobjects-view-stack-widget-example.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "LGPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/QuickCorp/qcobjects-view-stack-widget-example/issues"
+  },
+  "homepage": "https://github.com/QuickCorp/qcobjects-view-stack-widget-example#readme",
+  "dependencies": {
+    "qcobjects": "^2.3.24",
+    "qcobjects-cli": "^2.3.16",
+    "qcobjects-sdk": "^2.3.11"
+  }
+}
